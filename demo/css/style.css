@@ -1,0 +1,206 @@
+@import url("icons.css");
+@import url("info_control.css");
+
+@font-face {
+    font-family: 'AlienLeagueBold';
+    src: url('../fonts/alienleaguebold.ttf');
+}
+
+@font-face {
+    font-family: 'TitilliumWebBold';
+    src: url('../fonts/TitilliumWeb-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'TitilliumWebRegular';
+    src: url('../fonts/TitilliumWeb-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Medium.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Light.ttf');
+    font-style: normal;
+    font-weight: 200;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Lato, Helvetica, sans-serif;
+    font-weight: 200;
+}
+
+.header {
+    height: 50px;
+    width: 100%;
+    background: #FF7F00;
+    font-weight: 300;
+}
+
+.logo {
+    float: left;
+    padding: 12px;
+       color: white;
+    font-size:  1.5em;
+}
+
+.logo img {
+    height: 26px;
+    width: auto;
+}
+
+.info {
+    float: right;
+    padding: 7px 12px;
+    width: 60px;
+    opacity: 0.8;
+    position: relative;
+    text-align: center;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0.8;
+    color: #fff;
+    font-size: 28px;
+    transition: all 0.2s ease 0s;
+}
+
+.info:hover {
+    background: #4E6D84;
+}
+
+.intro {
+    color: black;
+    width: 50%;
+    margin: 150px auto;
+    text-align: center;
+}
+
+.modal {
+    color: #828D9A;
+    font-size: 1.2rem;
+}
+
+.modal h1, h2, h3, h4, h5, label {
+    color: #222222;
+}
+
+.modal-dialog {
+    margin-top: 70px;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+}
+
+.modal-body a {
+    text-decoration: none;
+}
+
+.leaflet-control-zoom {
+    margin-left: 24px !important;
+    margin-bottom: 24px !important;
+    border-radius: 0px !important;
+    box-shadow: none;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+    border-radius: 0px !important;
+    line-height: 36px !important;
+    border: 0 !important;
+    height: 36px !important;
+    width: 36px !important;
+    background: #FF7F00 !important;
+    color: white !important;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.45);
+    margin-bottom: 2px;
+    transition: all 0.2s ease 0s;
+}
+
+.leaflet-control-zoom-in:hover, .leaflet-control-zoom-out:hover {
+    background: #4E6D84 !important;
+}
+
+.leaflet-control-layers {
+    border-radius: 0;
+}
+
+#map {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    width: 100%;
+}
+
+.divider {
+    height: 2px;
+}
+
+.options {
+    margin: 24px;
+    border-radius: 0;
+}
+
+.title {
+    color: white;
+    font-size:  1.5em;
+    display: inline;
+    float: right;
+    padding: 10px;
+}
+
+button {
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: #FF7F00 !important;
+    background-color: #EDF1F2 !important;
+    transition: all 0.2s ease 0s;
+    font-weight: 200 !important;
+    /*box-shadow: 0px 1px 4px rgba(0,0,0,0.45) !important;*/
+}
+
+
+button:hover {
+    background: #d1d9de !important;
+}
+
+button.active {
+    /*font-weight: 400 !important;*/
+    color:#EDF1F2 !important;
+    background-color: #FF7F00 !important;
+}
+
+button.active:hover {
+    background-color: #3074a4 !important;
+}
+
+.dropdown-menu>li>a {
+    font-weight: 200;
+    color: #FF7F00 !important;
+}
+
+.dropdown-menu>li>a:hover {
+    background: #d1d9de !important;
+}
+
+.btn-group > ul {
+    background-color: #EDF1F2 !important;
+}

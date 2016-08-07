@@ -1,0 +1,74 @@
+.leaflet-control.mapbox-control-info {
+  margin:5px 30px 10px 10px;
+  min-height:26px;
+  min-width:26px;
+  padding: 0;
+  }
+  .leaflet-right .leaflet-control.mapbox-control-info {
+    margin:5px 10px 10px 30px;
+    }
+
+.mapbox-info-toggle {
+  background-color:#fff;
+  background: rgba(0,0,0,0);
+  z-index: 2;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  position:absolute;
+  bottom:0;left:0;
+  cursor: pointer;
+  }
+  .leaflet-right .mapbox-control-info .mapbox-info-toggle  { left:auto; right:0; }
+  .mapbox-info-toggle:hover { background-color: rgba(255,255,255,0.2); }
+
+.map-info-container {
+  background:#fff;
+  padding:3px 5px 3px 27px;
+  display:none;
+  position:relative;
+  bottom:0;left:0;
+  border-radius:13px 3px 3px 13px;
+  height: 26px;
+  line-height: 20px;
+  }
+  .leaflet-right .map-info-container {
+    left:auto;
+    right:0;
+    padding:3px 27px 3px 5px;
+    border-radius:3px 13px 13px 3px;
+    }
+
+.mapbox-control-info.active .map-info-container { display:inline-block; }
+.leaflet-container .mapbox-improve-map { font-weight:bold; }
+
+.leaflet-control-attribution.leaflet-compact-attribution:after {
+  content:'';
+  background-color:#fff;
+  background-color:rgba(255,255,255,0.5);
+  background-position:0 -78px;
+  border-radius:50%;
+  position:absolute;
+  display:inline-block;
+  width:26px;
+  height:26px;
+  vertical-align:middle;
+  bottom:0;
+  z-index:1;
+  visibility:visible;
+  }
+  .leaflet-control-attribution.leaflet-compact-attribution:hover:after { background-color:#fff; }
+
+.leaflet-right .leaflet-control-attribution.leaflet-compact-attribution:after { right:0; }
+.leaflet-left .leaflet-control-attribution.leaflet-compact-attribution:after { left:0; }
+
+.leaflet-control-attribution:after {
+  opacity: .75;
+  background-image:url(https://a.tiles.mapbox.com/v4/embed/mapbox.js/images/icons-000000@2x.png);
+  background-repeat:no-repeat;
+  background-size:26px 260px;
+  }
+
+.leaflet-container .leaflet-control-attribution {
+  background: rgba(0,0,0,0);
+}

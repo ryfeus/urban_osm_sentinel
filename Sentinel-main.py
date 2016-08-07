@@ -118,7 +118,7 @@ for band in vecBands:
 		vecPolygonsData[k][band]['polygonsLat'] = polygonsLat
 		vecPolygonsData[k][band]['polygonsLng'] = polygonsLng
 	# print(numpy.mean(vecPolygonsNumAll))
-	# print(band+' mean:'+str(numpy.mean(vecPolygonsNumAll))+" std:"+str(numpy.std(vecPolygonsNumAll)))
+	print(band+' mean:'+str(numpy.mean(vecPolygonsNumAll))+' median:'+str(numpy.median(vecPolygonsNumAll))+" std:"+str(numpy.std(vecPolygonsNumAll)))
 	vecBandData[band] = {}
 	vecBandData[band]['mean'] = numpy.median(vecPolygonsNumAll)
 	vecBandData[band]['std'] = numpy.std(vecPolygonsNumAll)
@@ -154,36 +154,34 @@ finalb[finalb>255]=255
 # print numpy.max(finalb)
 uint8blue=numpy.uint8(finalb)
 
-# bandScenes = numpy.zeros(((uint8red.shape[0], uint8red.shape[1]), dtype=bool))
+
 bandScenes = numpy.zeros((uint8red.shape[0], uint8red.shape[1]), dtype=bool)
-for i in range(uint8red.shape[0]):
-	for j in range(uint8red.shape[1]):
-		flagRed = (uint8red[i,j] > (vecBandData['B04']['mean']-vecBandData['B04']['std']/3))&((uint8red[i,j] < (vecBandData['B04']['mean']+vecBandData['B04']['std']/3)))
-		flagGreen = (uint8green[i,j] > (vecBandData['B03']['mean']-vecBandData['B03']['std']/3))&((uint8green[i,j] < (vecBandData['B03']['mean']+vecBandData['B03']['std']/3)))
-		flagBlue = (uint8blue[i,j] > (vecBandData['B02']['mean']-vecBandData['B02']['std']/3))&((uint8blue[i,j] < (vecBandData['B02']['mean']+vecBandData['B02']['std']/3)))
-		if (flagRed&flagGreen&flagBlue):
-			bandScenes[i,j] = True
-			# uint8red[i,j] = 1
-			# uint8green[i,j] = 255
-			# uint8blue[i,j] = 1
+# for i in range(uint8red.shape[0]):
+# 	for j in range(uint8red.shape[1]):
+# 		flagRed = (uint8red[i,j] > (vecBandData['B04']['mean']-vecBandData['B04']['std']/3))&((uint8red[i,j] < (vecBandData['B04']['mean']+vecBandData['B04']['std']/3)))
+# 		flagGreen = (uint8green[i,j] > (vecBandData['B03']['mean']-vecBandData['B03']['std']/3))&((uint8green[i,j] < (vecBandData['B03']['mean']+vecBandData['B03']['std']/3)))
+# 		flagBlue = (uint8blue[i,j] > (vecBandData['B02']['mean']-vecBandData['B02']['std']/3))&((uint8blue[i,j] < (vecBandData['B02']['mean']+vecBandData['B02']['std']/3)))
+# 		if (flagRed&flagGreen&flagBlue):
+# 			bandScenes[i,j] = True
 
-arrElement = [[0, 1, 0],[1, 1, 1],[0, 1, 0]]
-# arrElement = [  [0, 0, 1, 0, 0],
-#                 [0, 1, 1, 1, 0],
-#                 [1, 1, 1, 1, 1],
-#                 [0, 1, 1, 1, 0],
-#                 [0, 0, 1, 0, 0]]
+# arrElement = [[0, 1, 0],[1, 1, 1],[0, 1, 0]]
+# # arrElement = [  [0, 0, 1, 0, 0],
+# #                 [0, 1, 1, 1, 0],
+# #                 [1, 1, 1, 1, 1],
+# #                 [0, 1, 1, 1, 0],
+# #                 [0, 0, 1, 0, 0]]
 
-bandScenes = ndimage.binary_opening(bandScenes.astype(int),structure=arrElement)
-uint8red[bandScenes] = 1
-uint8green[bandScenes] = 255
-uint8blue[bandScenes] = 1
+# bandScenes = ndimage.binary_opening(bandScenes.astype(int),structure=arrElement)
+# uint8red[bandScenes] = 1
+# uint8green[bandScenes] = 255
+# uint8blue[bandScenes] = 1
 
 for k in range(len(vecPolygonsData)):
 	for i in range(len(vecPolygonsData[k]['B02']['polygonsLat'])):
-		uint8red[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 1
-		uint8green[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 1
-		uint8blue[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 255
+		bandScenes[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 1
+		# uint8red[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 1
+		# uint8green[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 1
+		# uint8blue[vecPolygonsData[k]['B02']['polygonsLat'][i],vecPolygonsData[k]['B02']['polygonsLng'][i]] = 255
 
 print(strName+'_RGB.tif')
 # setup output product
@@ -195,8 +193,8 @@ output = rasterio.open(outputpath, 'w', **profile)
 print('Write '+strName+'_RGB.tif')
 #fill output channels with bands
 output.write_band(1, img_as_ubyte(bandScenes.astype(int)))
-output.write_band(2, img_as_ubyte(bandScenes.astype(int)*255))
-output.write_band(3, img_as_ubyte(bandScenes.astype(int)))
+output.write_band(2, img_as_ubyte(bandScenes.astype(int)))
+output.write_band(3, img_as_ubyte(bandScenes.astype(int)*255))
 # output.write_band(1, img_as_ubyte(uint8red))
 # output.write_band(2, img_as_ubyte(uint8green))
 # output.write_band(3, img_as_ubyte(uint8blue))

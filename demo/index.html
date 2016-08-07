@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css' rel='stylesheet' />
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' /> -->
+
+    <title>Astro Digital</title>
+</head>
+<body>
+    <div class="header">
+      <div class="logo">
+       MAPS ACTUALLY
+      </div>
+      <div class="info" id="info-button" data-toggle="modal" data-target="#infoModal">
+        <i class="icng20-info"></i>
+      </div>
+      <div class="title" id="headerTitle">An Awesome Labs Example</div>
+    </div>
+    <div id="map"></div>
+    <div class="btn-toolbar options">
+      <div class="btn-group-vertical" id='menu-ui' role="group" aria-label="...">
+<!--         <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Year
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">2013</a></li>
+            <li><a href="#">2014</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+          <h3 class="text-center" id="boxTitle">Labs Template</h3>
+          <p id="boxDescription">A useful description of the project can go here. Lorem ipsum Dolor sunt Duis est id anim enim in consequat mollit ut elit minim dolore laborum consectetur pariatur eiusmod dolor cillum aute dolore sed dolore sit Duis id eu commodo eiusmod fugiat deserunt nostrud ullamco elit Duis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <!-- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script> -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='js/app.js'></script>
+</body>
+</html>
