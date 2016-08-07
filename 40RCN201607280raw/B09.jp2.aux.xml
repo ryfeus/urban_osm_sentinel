@@ -1,0 +1,7 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Metadata domain="IMAGE_STRUCTURE">
+      <MDI key="NBITS">15</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
